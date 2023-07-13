@@ -1,0 +1,100 @@
+PARSER_BEGIN(Karloff)
+import java.io.*;
+public class Karloff {
+
+  public static void main(String args[]) throws ParseException,IOException {
+    
+ Karloff analisador = new Karloff(new FileInputStream(args[0]));
+ analisador.Karloff();
+  }
+
+}
+
+PARSER_END(Karloff)
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+}
+
+TOKEN :
+{
+  <MAIN: "main">
+| <ACHAVES: "{">
+| <FCHAVES: "}">
+| <VOID: "void">
+| <APAR: "(">
+| <FPAR: ")">
+| <NEWVAR: "newVar">
+| <SEMICOLON: ";">
+| <COMMA: ",">
+| <TINT: "integer">
+| <TBOOL: "bool">
+| <CATRIB: "=">
+| <CIF: "if">
+| <CTHEN: "then">
+| <CWHILE: "while">
+| <CREP: "repeat">
+| <CUNT: "until">
+| <CRET: "return">
+| <CPRINT: "System.output">
+| <CREADINT: "System.readint">
+| <BTRUE: "true">
+| <BFALSE: "false">
+| <FUNC: "func">
+}
+
+TOKEN :
+{
+   <OP: "+" | "-" | "*"| "/" | "&" | "|" | "<" | ">" | "==">
+ | <STR: "\"" (["a"-"z","A"-"Z","0"-"9"])* "\"">
+ | <ID: ["a"-"z","A"-"Z"] (["a"-"z","A"-"Z","0"-"9"])* ("_" (["a"-"z","A"-"Z","0"-"9"])+)*>          
+ | <NUM: (["0"-"9"])+ ( "." (["0"-"9"])+ )? ("E" ("+"|"-")? (["0"-"9"])+)?>
+
+}
+
+
+
+void Karloff () :
+{Token t;}
+{
+
+(
+  <MAIN> 	{ System.out.println("Palavra reservada: main");}
+| <VOID> 	{ System.out.println("Palavra reservada: void");}
+| <NEWVAR> 	{ System.out.println("Palavra reservada: newVar");}
+| <TINT> 	{ System.out.println("Palavra reservada: integer");}
+| <TBOOL> 	{ System.out.println("Palavra reservada: bool");}
+| <CATRIB> 	{ System.out.println("Palavra reservada: =");}
+| <CIF> 	{ System.out.println("Palavra reservada: if");}
+| <CTHEN> 	{ System.out.println("Palavra reservada: then");}
+| <CWHILE> 	{ System.out.println("Palavra reservada: while");}
+| <CREP> 	{ System.out.println("Palavra reservada: repeat");}
+| <CUNT> 	{ System.out.println("Palavra reservada: until");}
+| <CRET> 	{ System.out.println("Palavra reservada: return");}
+| <CPRINT> 	{ System.out.println("Palavra reservada: System.output");}
+| <CREADINT> 	{ System.out.println("Palavra reservada: System.readint");}
+| <BTRUE> 	{ System.out.println("Palavra reservada: true");}
+| <BFALSE> 	{ System.out.println("Palavra reservada: false");} 
+| <FUNC> 	{ System.out.println("Palavra reservada: func");}
+| <ACHAVES> 	{ System.out.println("Abre chaves: {");}
+| <FCHAVES> 	{ System.out.println("Fecha chaves: }");}
+| <APAR> 	{ System.out.println("Abre parênteses: (");}
+| <FPAR> 	{ System.out.println("Fecha parênteses: )");}
+| <SEMICOLON> 	{ System.out.println("Ponto e vírgula: ;");}
+| <COMMA> 	{ System.out.println("Vírgula: ,");}
+| t=<OP> 	{ System.out.println("Operação: "+ t.image);}
+| t=<NUM> 	{ System.out.println("Número: "+ t.image);}
+| t=<ID> 	{ System.out.println("Identificador: "+ t.image);}
+)*
+<EOF> 
+
+}
+
+
+
+
+
