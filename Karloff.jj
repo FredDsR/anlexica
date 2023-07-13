@@ -1,13 +1,10 @@
 PARSER_BEGIN(Karloff)
 import java.io.*;
 public class Karloff {
-
-  public static void main(String args[]) throws ParseException,IOException {
-    
- Karloff analisador = new Karloff(new FileInputStream(args[0]));
- analisador.Karloff();
-  }
-
+    public static void main(String args[]) throws ParseException,IOException {
+        Karloff analisador = new Karloff(new FileInputStream(args[0]));
+        analisador.Karloff();
+    }
 }
 
 PARSER_END(Karloff)
@@ -50,10 +47,8 @@ TOKEN :
 TOKEN :
 {
    <OP: "+" | "-" | "*"| "/" | "&" | "|" | "<" | ">" | "==">
- | <STR: "\"" (["a"-"z","A"-"Z","0"-"9"])* "\"">
  | <ID: ["a"-"z","A"-"Z"] (["a"-"z","A"-"Z","0"-"9"])* ("_" (["a"-"z","A"-"Z","0"-"9"])+)*>          
  | <NUM: (["0"-"9"])+ ( "." (["0"-"9"])+ )? ("E" ("+"|"-")? (["0"-"9"])+)?>
-
 }
 
 

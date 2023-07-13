@@ -1,10 +1,9 @@
 void main () {
 	newVar integer times;
 	newVar integer output;
-	System.output ("Type the times of fibonacci sequence:");
 	System.readint(times);	
 	output = fib(times);
-	System.output("Result: " + output)
+	System.output(output)
 }
 
 integer func fib (integer times) {
