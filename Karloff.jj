@@ -11,14 +11,17 @@ PARSER_END(Karloff)
 
 SKIP :
 {
+
   " "
 | "\t"
 | "\n"
 | "\r"
+
 }
 
 TOKEN :
 {
+
   <MAIN: "main">
 | <ACHAVES: "{">
 | <FCHAVES: "}">
@@ -42,13 +45,16 @@ TOKEN :
 | <BTRUE: "true">
 | <BFALSE: "false">
 | <FUNC: "func">
+
 }
 
 TOKEN :
 {
+
    <OP: "+" | "-" | "*"| "/" | "&" | "|" | "<" | ">" | "==">
  | <ID: ["a"-"z","A"-"Z"] (["a"-"z","A"-"Z","0"-"9"])* ("_" (["a"-"z","A"-"Z","0"-"9"])+)*>          
  | <NUM: (["0"-"9"])+ ( "." (["0"-"9"])+ )? ("E" ("+"|"-")? (["0"-"9"])+)?>
+
 }
 
 
@@ -85,11 +91,6 @@ void Karloff () :
 | t=<NUM> 	{ System.out.println("Número: "+ t.image);}
 | t=<ID> 	{ System.out.println("Identificador: "+ t.image);}
 )*
-<EOF> 
+<EOF>
 
 }
-
-
-
-
-
