@@ -1,0 +1,19 @@
+void main () {
+	newVar integer valor;
+	newVar integer soma
+	newVar integer contador;
+	newVar integer qtde_valores;
+
+	soma = 0;
+
+	qtde_valores = System.readint();
+	contador = qtde_valores;
+
+	repeat {
+		valor = System.readint();
+		soma = soma + valor;
+		contador = contador - 1;
+	} until (contador > 0);
+
+	System.output(soma/qtde_valores);
+}

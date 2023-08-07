@@ -1,0 +1,14 @@
+void main () {
+    newVar integer entrada;
+    newVar integer fatorial;
+
+    entrada = System.readint();
+    fatorial = entrada;
+    
+    while (entrada > 0) {
+        entrada = entrada - 1;
+        fatorial = fatorial * entrada;
+    }
+
+    System.output(fatorial);
+}
